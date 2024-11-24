@@ -1,0 +1,24 @@
+using UnityEngine;
+
+public class EndlessRunnerWithNature : MonoBehaviour
+{
+    public float forwardSpeed = 10f;  // Speed of forward movement
+    public float sideSpeed = 5f;     // Speed of horizontal movement
+    public GameObject obstaclePrefab;  // Prefab for obstacles
+    public GameObject flowerPrefab;    // Prefab for flowers
+    public GameObject treePrefab;      // Prefab for trees
+    public ParticleSystem leafParticles; // Particle system for falling leaves
+    public Transform spawnPoint;       // Spawn point for obstacles/environment
+    public float spawnInterval = 2f;   // Time interval between spawns
+    public TextMesh scoreText;         // UI Text to display score
+
+    private float score = 0f;
+    private float nextSpawnTime = 0f;
+
+    void Update()
+    {
+        // Move the player forward constantly
+        transform.Translate(Vector3.forward * forwardSpeed * Time.deltaTime);
+
+        // Horizontal movement (e.g., swipe or arrow keys)
+        float horizontalInput =
